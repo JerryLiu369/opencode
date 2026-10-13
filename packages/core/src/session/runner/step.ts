@@ -182,7 +182,7 @@ export const make = Effect.gen(function* () {
                 reason: new InvalidProviderOutputError({
                   message:
                     recorded.finish.finish === "error"
-                      ? "The provider response ended with an error finish reason."
+                      ? `The provider response ended with an error finish reason${recorded.finish.rawFinish ? ` (${recorded.finish.rawFinish})` : ""}.`
                       : "The provider response ended with an unknown finish reason.",
                   ...(recorded.finish.finish === "unknown" ? { classification: "incomplete-stream" as const } : {}),
                 }),
